@@ -27,8 +27,10 @@
                                     <td>{{ $employee->phone }}</td>
                                 </tr>
                             @endforeach
-                        @else
-                            <p>No employees found.</p>
+                        </table>
+                        {{ $employees->links() }}
+                    @else
+                        <p>No employees found.</p>
                     @endif
                 </div>
             </div>

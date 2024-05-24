@@ -23,8 +23,10 @@
                                     <td>{{ $company->website }}</td>
                                 </tr>
                             @endforeach
-                        @else
-                            <p>No companies found.</p>
+                        </table>
+                        {{ $companies->links() }}
+                    @else
+                        <p>No companies found.</p>
                     @endif
                 </div>
             </div>
