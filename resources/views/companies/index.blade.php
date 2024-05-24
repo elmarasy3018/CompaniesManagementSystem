@@ -17,6 +17,8 @@
                                 <th>Email</th>
                                 <th>Website</th>
                                 <th>Logo</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                             @foreach ($companies as $company)
                                 <tr>
@@ -24,8 +26,17 @@
                                     <td>{{ $company->email }}</td>
                                     <td>{{ $company->website }}</td>
                                     <td><img style="width: 3rem; height: 3rem;"
-                                            src="{{ asset('storage/' . $company->getFirstMedia()->model_id . '/' . $company->getFirstMedia()->file_name) }}"
+                                            src="{{ asset('storage/' . $company->getFirstMedia()->id . '/' . $company->getFirstMedia()->file_name) }}"
                                             alt="{{ $company->name }}">
+                                    </td>
+                                    <td><a href="{{ route('companies.edit', $company->id) }}">Edit</a></td>
+                                    <td>
+                                        <form action="{{ route('companies.destroy', $company->id) }}" method="post"
+                                            onsubmit="return confirm('Are You Sure ?');">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

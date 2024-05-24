@@ -9,13 +9,15 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form action="{{ route('companies.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('companies.update', $company->id) }}" method="post"
+                        enctype="multipart/form-data">
+                        @method('put')
                         @csrf
-                        <input type="text" name="name" id="name">
-                        <input type="email" name="email" id="email">
-                        <input type="text" name="website" id="website">
+                        <input type="text" name="name" id="name" value="{{ $company->name }}">
+                        <input type="email" name="email" id="email" value="{{ $company->email }}">
+                        <input type="text" name="website" id="website" value="{{ $company->website }}">
                         <input type="file" name="image" id="image">
-                        <button type="submit">Create Company</button>
+                        <button type="submit">Update Company</button>
                     </form>
                 </div>
             </div>

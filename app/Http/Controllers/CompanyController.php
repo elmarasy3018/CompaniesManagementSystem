@@ -48,7 +48,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('companies.edit', ['company' => $company]);
     }
 
     /**
@@ -56,7 +56,12 @@ class CompanyController extends Controller
      */
     public function update(UpdateCompanyRequest $request, Company $company)
     {
-        //
+        $company->update($request->validated());
+        if ($request->hasFile('image')) {
+            $company->clearMediaCollection();
+            $company->addMediaFromRequest('image')->usingName($company->name)->toMediaCollection();
+        }
+        return redirect('companies');
     }
 
     /**
@@ -64,6 +69,7 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+        return redirect('companies');
     }
 }
