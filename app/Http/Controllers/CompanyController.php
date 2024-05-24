@@ -22,7 +22,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -30,7 +30,9 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request)
     {
-        //
+        $company = Company::create($request->validated());
+        $company->addMediaFromRequest('image')->usingName($company->name)->toMediaCollection();
+        return redirect('companies');
     }
 
     /**
