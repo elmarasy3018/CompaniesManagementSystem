@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\employee;
+use App\Models\Company;
 use App\Http\Requests\StoreemployeeRequest;
 use App\Http\Requests\UpdateemployeeRequest;
 
@@ -22,7 +23,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employees.create');
+        $companies = Company::all();
+        return view('employees.create', ['companies' => $companies]);
     }
 
     /**
@@ -47,7 +49,8 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        return view('employees.edit', ['employee' => $employee]);
+        $companies = Company::all();
+        return view('employees.edit', ['employee' => $employee, 'companies' => $companies]);
     }
 
     /**

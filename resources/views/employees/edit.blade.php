@@ -15,7 +15,7 @@
                         @csrf
                         <div class="mb-5">
                             <label for="first_name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Employee Frist
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Employee First
                                 Name</label>
                             <input type="text" name="first_name" id="first_name" value="{{ $employee->first_name }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -26,14 +26,21 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Employee Last
                                 Email</label>
                             <input type="text" name="last_name" id="last_name" value="{{ $employee->last_name }}"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required />
                         </div>
                         <div class="mb-5">
                             <label for="company_id"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Employee
                                 Company</label>
-                            <input type="number" name="company_id" id="company_id" value="{{ $employee->company_id }}"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                            <select name="company_id" id="company_id"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required>
+                                @foreach ($companies as $company)
+                                    <option value="{{ $company->id }}"
+                                        @if ($company->id == $employee->company_id) selected @endif>{{ $company->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-5">
                             <label for="email"
