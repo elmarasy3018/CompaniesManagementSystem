@@ -22,21 +22,22 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employees.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreemployeeRequest $request)
+    public function store(StoreEmployeeRequest $request)
     {
-        //
+        Employee::create($request->validated());
+        return redirect('employees');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(employee $employee)
+    public function show(Employee $employee)
     {
         //
     }
@@ -44,24 +45,26 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(employee $employee)
+    public function edit(Employee $employee)
     {
-        //
+        return view('employees.edit', ['employee' => $employee]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateemployeeRequest $request, employee $employee)
+    public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        //
+        $employee->update($request->validated());
+        return redirect('employees');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(employee $employee)
+    public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect('employees');
     }
 }

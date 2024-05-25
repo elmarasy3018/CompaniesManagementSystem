@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('first_name')->nullable(false);
             $table->string('last_name')->nullable(false);
-            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('company_id')->nullable(false);
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->string('email');
-            $table->string('phone');
+            $table->string('email')->nullable(true);
+            $table->string('phone')->nullable(true);
             $table->timestamps();
         });
     }
