@@ -23,8 +23,8 @@ class StoreCompanyRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'email' => ['required'],
-            'website' => ['required'],
+            'email' => ['nullable'],
+            'website' => ['nullable'],
         ];
     }
 }
