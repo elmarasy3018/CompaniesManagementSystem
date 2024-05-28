@@ -12,7 +12,7 @@ class Company extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    protected $guarded = [];
+    protected $fillable = ['name', 'email', 'website'];
 
     public function employees(): HasMany
     {

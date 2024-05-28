@@ -51,9 +51,9 @@
                                             </th>
                                             <td class="px-6 py-4">{{ $company->email }}</td>
                                             <td class="px-6 py-4">{{ $company->website }}</td>
-                                            <td class="px-6 py-4"><img style="width: 3rem; height: 3rem;"
-                                                    src="{{ asset('storage/' . $company->getFirstMedia()->id . '/' . $company->getFirstMedia()->file_name) }}"
-                                                    alt="{{ $company->name }}"></td>
+                                            <td class="px-6 py-4"><img
+                                                    src="{{ asset('storage/' . $company->getFirstMedia('Logo')->id . '/' . $company->getFirstMedia('Logo')->file_name) }}"
+                                                    alt="{{ $company->name }}" class="h-14 w-14 m-2"></td>
                                             <td class="px-6 py-4"><a href="{{ route('companies.edit', $company->id) }}">
                                                     <button type="button"
                                                         class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">

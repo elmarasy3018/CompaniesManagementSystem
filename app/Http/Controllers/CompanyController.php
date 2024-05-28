@@ -31,7 +31,7 @@ class CompanyController extends Controller
     public function store(StoreCompanyRequest $request)
     {
         $company = Company::create($request->validated());
-        $company->addMediaFromRequest('image')->usingName($company->name)->toMediaCollection();
+        $company->addMediaFromRequest('image')->usingName($company->name)->toMediaCollection('Logo');
         return redirect('companies');
     }
 
@@ -58,8 +58,8 @@ class CompanyController extends Controller
     {
         $company->update($request->validated());
         if ($request->hasFile('image')) {
-            $company->clearMediaCollection();
-            $company->addMediaFromRequest('image')->usingName($company->name)->toMediaCollection();
+            $company->clearMediaCollection('Logo');
+            $company->addMediaFromRequest('image')->usingName($company->name)->toMediaCollection('Logo');
         }
         return redirect('companies');
     }
