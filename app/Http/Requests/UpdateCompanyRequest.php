@@ -22,9 +22,9 @@ class UpdateCompanyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required'],
-            'email' => ['nullable'],
-            'website' => ['nullable'],
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['nullable', 'email', 'max:100'],
+            'website' => ['nullable', 'string', 'max:100'],
         ];
     }
 }
