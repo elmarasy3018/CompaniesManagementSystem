@@ -48,9 +48,15 @@
                                     @foreach ($employees as $employee)
                                         <tr
                                             class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                            <th scope="row" class="px-6 py-4">{{ $employee->first_name }}</th>
-                                            <td class="px-6 py-4">{{ $employee->last_name }}</td>
-                                            <td class="px-6 py-4">{{ $employee->company->name }}</td>
+                                            <th
+                                                scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $employee->first_name }}</th>
+                                            <td
+                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $employee->last_name }}</td>
+                                            <td
+                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $employee->company->name }}</td>
                                             <td class="px-6 py-4">{{ $employee->email }}</td>
                                             <td class="px-6 py-4">{{ $employee->phone }}</td>
                                             <td class="px-6 py-4"><a
