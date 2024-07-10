@@ -23,6 +23,22 @@
                 </div>
             </div>
 
+            <!-- Language Selection -->
+            <div class="flex flex-row items-center right-1">
+                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <a rel="alternate" hreflang="{{ $localeCode }}"
+                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        <button
+                            class="p-2 flex flex-row items-center border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:bg-gray-200 focus:outline-none">
+                            <span class="text-md text-gray-600">{{ $properties['native'] }}</span>
+                            <span class="ml-1"> <img
+                                    src="https://img.icons8.com/?size=512&id={{ $properties['icon'] }}&format=png"
+                                    class="w-5 h-5" /></span>
+                        </button>
+                    </a>
+                @endforeach
+            </div>
+
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
