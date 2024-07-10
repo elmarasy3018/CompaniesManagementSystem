@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\EmployeeController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -22,7 +21,6 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resources([
         'companies' => CompanyController::class,
-        'employees' => EmployeeController::class,
     ]);
 });
 
