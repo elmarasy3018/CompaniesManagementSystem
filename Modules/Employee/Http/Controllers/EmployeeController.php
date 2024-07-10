@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Modules\Employee\Http\Controllers;
 
-use App\Models\employee;
 use App\Models\Company;
-use App\Http\Requests\StoreEmployeeRequest;
-use App\Http\Requests\UpdateEmployeeRequest;
+use Illuminate\Routing\Controller;
+use Modules\Employee\Entities\Employee;
+use Modules\Employee\Http\Requests\StoreEmployeeRequest;
+use Modules\Employee\Http\Requests\UpdateEmployeeRequest;
 
 class EmployeeController extends Controller
 {
@@ -15,7 +16,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::with(['company'])->paginate(10);
-        return view('employees.index', ['employees' => $employees]);
+        return view('employee::index', ['employees' => $employees]);
     }
 
     /**
@@ -24,7 +25,7 @@ class EmployeeController extends Controller
     public function create()
     {
         $companies = Company::all();
-        return view('employees.create', ['companies' => $companies]);
+        return view('employee::create', ['companies' => $companies]);
     }
 
     /**
@@ -50,7 +51,7 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         $companies = Company::all();
-        return view('employees.edit', ['employee' => $employee, 'companies' => $companies]);
+        return view('employee::edit', ['employee' => $employee, 'companies' => $companies]);
     }
 
     /**
