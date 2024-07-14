@@ -10,5 +10,15 @@ return [
     'companies' => "Companies",
     'profile' => "Profile",
     'logout' => "Log Out",
+    'create' => "Create",
+    'edit' => "Edit",
+    'delete' => "Delete",
+    'name' => "Name",
+    'email' => "Email",
+    'website' => "Website",
+    'logo' => "Logo",
+    'first' => "First Name",
+    'last' => "Last Name",
+    'phone' => "Phone",
 
 ];
