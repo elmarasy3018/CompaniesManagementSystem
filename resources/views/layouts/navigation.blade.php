@@ -13,14 +13,30 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('companies.index')" :active="request()->routeIs('companies.index')">
-                        {{ __('Companies') }}
+                        {{ __('web.companies') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('employees.index')" :active="request()->routeIs('employees.index')">
-                        {{ __('Employees') }}
+                        {{ __('web.employees') }}
                     </x-nav-link>
                 </div>
+            </div>
+
+            <!-- Language Selection -->
+            <div class="flex flex-row items-center right-1">
+                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <a rel="alternate" hreflang="{{ $localeCode }}"
+                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        <button
+                            class="p-2 flex flex-row items-center border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:bg-gray-200 focus:outline-none">
+                            <span class="text-md text-gray-600">{{ $properties['native'] }}</span>
+                            <span class="ml-1"> <img
+                                    src="https://img.icons8.com/?size=512&id={{ $properties['icon'] }}&format=png"
+                                    class="w-5 h-5" /></span>
+                        </button>
+                    </a>
+                @endforeach
             </div>
 
             <!-- Settings Dropdown -->
@@ -44,7 +60,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('web.profile') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -54,7 +70,7 @@
                             <x-dropdown-link :href="route('logout')"
                                 onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('web.logout') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -94,7 +110,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('web.profile') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -104,7 +120,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('web.logout') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

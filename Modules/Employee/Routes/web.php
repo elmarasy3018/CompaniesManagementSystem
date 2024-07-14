@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Employee\Http\Controllers\EmployeeController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,16 @@ use Modules\Employee\Http\Controllers\EmployeeController;
 |
 */
 
-Route::middleware('auth')->group(function () {
-    Route::resources([
-        'employees' => EmployeeController::class,
-    ]);
-});
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+    ],
+    function () {
+        Route::middleware('auth')->group(function () {
+            Route::resources([
+                'employees' => EmployeeController::class,
+            ]);
+        });
+    }
+);
