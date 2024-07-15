@@ -19,7 +19,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                            <input type="text" name="first_name" id="first_name"
+                            <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                         </div>
                         <div class="mb-5">
@@ -30,7 +30,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                            <input type="text" name="last_name" id="last_name"
+                            <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                         </div>
                         <div class="mb-5">
@@ -43,9 +43,12 @@
                             @enderror
                             <select name="company_id" id="company_id"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option value="" disabled selected></option>
+                                <option value="" {{ old('company_id') == '' ? 'selected' : '' }} disabled>
+                                </option>
                                 @foreach ($companies as $company)
-                                    <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                    <option value="{{ $company->id }}"
+                                        {{ old('company_id') == $company->id ? 'selected' : '' }}>
+                                        {{ $company->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -57,7 +60,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                            <input type="text" name="email" id="email"
+                            <input type="text" name="email" id="email" value="{{ old('email') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                         </div>
                         <div class="mb-5">
@@ -68,7 +71,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                            <input type="text" name="phone" id="phone"
+                            <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                         </div>
                         <button type="submit"
