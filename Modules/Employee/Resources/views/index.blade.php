@@ -36,6 +36,9 @@
                                             {{ __('web.phone') }}
                                         </th>
                                         <th scope="col" class="text-base px-6 py-3">
+                                            {{ __('web.logo') }}
+                                        </th>
+                                        <th scope="col" class="text-base px-6 py-3">
                                             {{ __('web.edit') }}
                                         </th>
                                         <th scope="col" class="text-base px-6 py-3">
@@ -58,6 +61,10 @@
                                                 {{ $employee->company->name }}</td>
                                             <td class="px-6 py-4">{{ $employee->email }}</td>
                                             <td class="px-6 py-4">{{ $employee->phone }}</td>
+                                            <td class="px-6 py-4">
+                                                <img src="{{ asset('storage/' . $employee->getFirstMedia('employee')->id . '/' . $employee->getFirstMedia('employee')->file_name) }}"
+                                                    alt="{{ $employee->first_name }}" class="h-14 w-14 m-2">
+                                            </td>
                                             <td class="px-6 py-4"><a
                                                     href="{{ route('employees.edit', $employee->id) }}">
                                                     <button type="button"

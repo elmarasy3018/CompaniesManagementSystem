@@ -20,6 +20,7 @@ class StoreEmployeeRequest extends FormRequest
             'email' => ['required', 'email', 'max:100'],
             'phone' => ['required', 'regex:/^05\d{8}$/'],
             // 'phone' => ['required', 'numeric', 'digits:10', 'starts_with:05'],
+            'image' => ['required', 'mimes:jpeg,jpg,png,gif', 'max:3000'],
         ];
     }
 

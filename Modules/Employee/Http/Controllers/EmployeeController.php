@@ -33,7 +33,8 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        Employee::create($request->validated());
+        $employee = Employee::create($request->validated());
+        $employee->addMediaFromRequest('image')->usingName($employee->first_name)->toMediaCollection('employee');
         return redirect('employees');
     }
 
@@ -60,6 +61,10 @@ class EmployeeController extends Controller
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
         $employee->update($request->validated());
+        if ($request->hasFile('image')) {
+            $employee->clearMediaCollection('employee');
+            $employee->addMediaFromRequest('image')->usingName($employee->first_name)->toMediaCollection('employee');
+        }
         return redirect('employees');
     }
 
