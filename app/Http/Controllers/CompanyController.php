@@ -31,7 +31,7 @@ class CompanyController extends Controller
     public function store(StoreCompanyRequest $request)
     {
         $company = Company::create($request->validated());
-        $company->addMediaFromRequest('image')->usingName($company->name)->toMediaCollection('Logo');
+        $company->addMediaFromRequest('image')->usingName($company->name)->toMediaCollection('company');
         return redirect('companies');
     }
 

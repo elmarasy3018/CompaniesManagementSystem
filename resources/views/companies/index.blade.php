@@ -51,7 +51,7 @@
                                             <td class="px-6 py-4">{{ $company->email }}</td>
                                             <td class="px-6 py-4">{{ $company->website }}</td>
                                             <td class="px-6 py-4"><img
-                                                    src="{{ asset('storage/' . $company->getFirstMedia('Logo')->id . '/' . $company->getFirstMedia('Logo')->file_name) }}"
+                                                    src="{{ asset('storage/' . $company->getFirstMedia('company')->id . '/' . $company->getFirstMedia('company')->file_name) }}"
                                                     alt="{{ $company->name }}" class="h-14 w-14 m-2"></td>
                                             <td class="px-6 py-4"><a
                                                     href="{{ route('companies.edit', $company->id) }}">
