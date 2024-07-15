@@ -58,8 +58,8 @@ class CompanyController extends Controller
     {
         $company->update($request->validated());
         if ($request->hasFile('image')) {
-            $company->clearMediaCollection('Logo');
-            $company->addMediaFromRequest('image')->usingName($company->name)->toMediaCollection('Logo');
+            $company->clearMediaCollection('company');
+            $company->addMediaFromRequest('image')->usingName($company->name)->toMediaCollection('company');
         }
         return redirect('companies');
     }
