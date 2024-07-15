@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->foreignID('company_id')->references('id')->on('companies');
-            $table->string('email')->nullable(true);
-            $table->string('phone')->nullable(true);
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
