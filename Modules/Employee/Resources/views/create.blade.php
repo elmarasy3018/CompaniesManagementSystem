@@ -9,85 +9,116 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form action="{{ route('employees.store') }}" method="post" enctype="multipart/form-data"
-                        class="max-w-sm mx-auto">
+                    <form action="{{ route('employees.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="mb-5">
-                            <label for="first_name"
-                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.first') }}</label>
-                            @error('first_name')
-                                <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                            <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                        </div>
-                        <div class="mb-5">
-                            <label for="last_name"
-                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.last') }}</label>
-                            @error('last_name')
-                                <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                            <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                        </div>
-                        <div class="mb-5">
-                            <label for="company_id"
-                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.company') }}</label>
-                            @error('company_id')
-                                <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                            <select name="company_id" id="company_id"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option value="" {{ old('company_id') == '' ? 'selected' : '' }} disabled>
-                                </option>
-                                @foreach ($companies as $company)
-                                    <option value="{{ $company->id }}"
-                                        {{ old('company_id') == $company->id ? 'selected' : '' }}>
-                                        {{ $company->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-5">
-                            <label for="email"
-                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.email') }}</label>
-                            @error('email')
-                                <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                            <input type="text" name="email" id="email" value="{{ old('email') }}"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                        </div>
-                        <div class="mb-5">
-                            <label for="phone"
-                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.phone') }}</label>
-                            @error('phone')
-                                <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                            <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                        </div>
-                        <div class="mb-5">
-                            <label for="image"
-                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.logo') }}</label>
-                            @error('image')
-                                <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                            <input type="file" name="image" id="image"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        <div class="grid grid-cols-2 grid-flow-row gap-6">
+                            <div>
+                                <label for="ar_first_name"
+                                    class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.first') }}
+                                    (Ar)</label>
+                                @error('ar_first_name')
+                                    <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <input type="text" name="ar_first_name" id="ar_first_name"
+                                    value="{{ old('ar_first_name') }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                            </div>
+                            <div>
+                                <label for="ar_last_name"
+                                    class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.last') }}
+                                    (Ar)</label>
+                                @error('ar_last_name')
+                                    <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <input type="text" name="ar_last_name" id="ar_last_name"
+                                    value="{{ old('ar_last_name') }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                            </div>
+                            <div>
+                                <label for="en_first_name"
+                                    class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.first') }}
+                                    (En)</label>
+                                @error('en_first_name')
+                                    <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <input type="text" name="en_first_name" id="en_first_name"
+                                    value="{{ old('en_first_name') }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                            </div>
+                            <div>
+                                <label for="en_last_name"
+                                    class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.last') }}
+                                    (En)</label>
+                                @error('en_last_name')
+                                    <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <input type="text" name="en_last_name" id="en_last_name"
+                                    value="{{ old('en_last_name') }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                            </div>
+                            <div>
+                                <label for="company_id"
+                                    class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.company') }}</label>
+                                @error('company_id')
+                                    <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <select name="company_id" id="company_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option value="" {{ old('company_id') == '' ? 'selected' : '' }} disabled>
+                                    </option>
+                                    @foreach ($companies as $company)
+                                        <option value="{{ $company->id }}"
+                                            {{ old('company_id') == $company->id ? 'selected' : '' }}>
+                                            {{ $company->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <label for="email"
+                                    class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.email') }}</label>
+                                @error('email')
+                                    <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <input type="text" name="email" id="email" value="{{ old('email') }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                            </div>
+                            <div>
+                                <label for="phone"
+                                    class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.phone') }}</label>
+                                @error('phone')
+                                    <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                            </div>
+                            <div>
+                                <label for="image"
+                                    class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.logo') }}</label>
+                                @error('image')
+                                    <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <input type="file" name="image" id="image"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                            </div>
                         </div>
                         <button type="submit"
-                            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">{{ __('web.create') }}
+                            class="mt-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">{{ __('web.create') }}
                             {{ __('web.employee') }}</button>
                     </form>
                 </div>

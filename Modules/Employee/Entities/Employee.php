@@ -8,12 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
 
-class Employee extends Model implements HasMedia
+class Employee extends Model implements HasMedia, TranslatableContract
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia, Translatable;
 
-    protected $fillable = ['first_name', 'last_name', 'company_id', 'email', 'phone'];
+    protected $fillable = ['company_id', 'email', 'phone'];
+    public $translatedAttributes = ['first_name', 'last_name'];
 
     public function company(): BelongsTo
     {

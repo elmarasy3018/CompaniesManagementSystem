@@ -33,7 +33,21 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        $employee = Employee::create($request->validated());
+        $validated = $request->validated();
+
+        $translated = [
+            'ar' => [
+                'first_name' => $request->input('ar_first_name'),
+                'last_name' => $request->input('ar_last_name')
+            ],
+            'en' => [
+                'first_name' => $request->input('en_first_name'),
+                'last_name' => $request->input('en_last_name')
+            ],
+        ];
+
+        $translated += $validated;
+        $employee = Employee::create($translated);
         $employee->addMediaFromRequest('image')->usingName($employee->first_name)->toMediaCollection('employee');
         return redirect('employees');
     }
