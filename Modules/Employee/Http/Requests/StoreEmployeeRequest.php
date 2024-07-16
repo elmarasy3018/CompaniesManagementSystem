@@ -14,8 +14,10 @@ class StoreEmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['required', 'string', 'max:100'],
-            'last_name' => ['required', 'string', 'max:100'],
+            'ar_first_name' => ['required', 'string', 'max:100'],
+            'ar_last_name' => ['required', 'string', 'max:100'],
+            'en_first_name' => ['required', 'string', 'max:100'],
+            'en_last_name' => ['required', 'string', 'max:100'],
             'company_id' => ['required', 'exists:companies,id'],
             'email' => ['required', 'email', 'max:100'],
             'phone' => ['required', 'regex:/^05\d{8}$/'],
