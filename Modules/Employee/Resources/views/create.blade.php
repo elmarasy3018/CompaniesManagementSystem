@@ -13,25 +13,47 @@
                         class="max-w-sm mx-auto">
                         @csrf
                         <div class="mb-5">
-                            <label for="first_name"
-                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.first') }}</label>
-                            @error('first_name')
+                            <label for="ar_first_name"
+                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.first') }} (Ar)</label>
+                            @error('ar_first_name')
                                 <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
                                     {{ $message }}
                                 </div>
                             @enderror
-                            <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}"
+                            <input type="text" name="ar_first_name" id="ar_first_name" value="{{ old('ar_first_name') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                         </div>
                         <div class="mb-5">
-                            <label for="last_name"
-                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.last') }}</label>
-                            @error('last_name')
+                            <label for="ar_last_name"
+                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.last') }} (Ar)</label>
+                            @error('ar_last_name')
                                 <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
                                     {{ $message }}
                                 </div>
                             @enderror
-                            <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}"
+                            <input type="text" name="ar_last_name" id="ar_last_name" value="{{ old('ar_last_name') }}"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        </div>
+                        <div class="mb-5">
+                            <label for="en_first_name"
+                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.first') }} (En)</label>
+                            @error('en_first_name')
+                                <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            <input type="text" name="en_first_name" id="en_first_name" value="{{ old('en_first_name') }}"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        </div>
+                        <div class="mb-5">
+                            <label for="en_last_name"
+                                class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.last') }} (En)</label>
+                            @error('en_last_name')
+                                <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            <input type="text" name="en_last_name" id="en_last_name" value="{{ old('en_last_name') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                         </div>
                         <div class="mb-5">
