@@ -25,6 +25,14 @@ To install the project with locally run :
   php artisan serve
 ```
 Then go to link localhost:8000
+
+## Packages
+
+To install the "laravel-translatable" package using Composer :
+```bash
+  composer require astrotomic/laravel-translatable
+```
+
 ## Authors
 
 - [@elmarasy3018](https://github.com/elmarasy3018)
