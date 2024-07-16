@@ -5,10 +5,10 @@ namespace Modules\Employee\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class EmployeTranslation extends Model
+class EmployeeTranslation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'full_text'];
+    protected $fillable = ['first_name', 'last_name'];
     public $timestamps = false;
 }
