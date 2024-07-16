@@ -66,6 +66,6 @@ class EmployeeController extends Controller
         $EmployeeId = $request->route('id');
         $this->EmployeeRepository->deleteEmployee($EmployeeId);
 
-        return response()->json(null, Response::HTTP_NO_CONTENT);
+        return response()->json(['message' => 'Employee deleted successfully']);
     }
 }
