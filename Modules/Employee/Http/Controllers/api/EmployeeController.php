@@ -61,7 +61,7 @@ class EmployeeController extends Controller
     //     ]);
     // }
 
-    public function destroy(Request $request): JsonResponse
+    public function delete(Request $request): JsonResponse
     {
         $EmployeeId = $request->route('id');
         $this->EmployeeRepository->deleteEmployee($EmployeeId);
