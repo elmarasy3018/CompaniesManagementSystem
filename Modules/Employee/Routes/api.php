@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Modules\Employee\Http\Controllers\api\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/employee', function (Request $request) {
-    return $request->user();
-});
+Route::get('employees', [EmployeeController::class, 'index']);
+Route::get('employees/{id}', [EmployeeController::class, 'show']);
+Route::post('employees', [EmployeeController::class, 'store']);
+Route::put('employees/{id}', [EmployeeController::class, 'update']);
+Route::delete('employees/{id}', [EmployeeController::class, 'delete']);

@@ -88,6 +88,7 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         $employee->delete();
+        $employee->clearMediaCollection('employee');
         return redirect('employees');
     }
 }

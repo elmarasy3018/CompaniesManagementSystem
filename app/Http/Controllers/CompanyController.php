@@ -70,6 +70,7 @@ class CompanyController extends Controller
     public function destroy(Company $company)
     {
         $company->delete();
+        $company->clearMediaCollection('company');
         return redirect('companies');
     }
 }
