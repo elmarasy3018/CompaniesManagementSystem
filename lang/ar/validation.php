@@ -193,8 +193,10 @@ return [
     */
 
     'attributes' => [
-        'first_name' => "الأسم الأول",
-        'last_name' => "الأسم الأخير",
+        'ar_first_name' => "الأسم الأول (Ar)",
+        'ar_last_name' => "الأسم الأخير (Ar)",
+        'en_first_name' => "الأسم الأول (En)",
+        'en_last_name' => "الأسم الأخير (En)",
         'company_id' => "الشركة",
         'email' => "البريد الإلكتروني",
         'phone' => "رقم الهاتف",
