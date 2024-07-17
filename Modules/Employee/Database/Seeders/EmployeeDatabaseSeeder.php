@@ -27,7 +27,6 @@ class EmployeeDatabaseSeeder extends Seeder
                 ],
                 'email' => 'test@test.com',
                 'phone' => '0512345678',
-                'company_id' => Company::all()->random()->id,
             ],
             [
                 'ar' => [
@@ -40,7 +39,6 @@ class EmployeeDatabaseSeeder extends Seeder
                 ],
                 'email' => 'test2@test.com',
                 'phone' => '0512345679',
-                'company_id' => Company::all()->random()->id,
             ]
         ];
 
