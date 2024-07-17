@@ -15,34 +15,38 @@ class EmployeeDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $mohamed = Employee::create([
-            'ar' => [
-                'first_name' => 'محمد',
-                'last_name' => 'مصطفى'
+        $employees = [
+            [
+                'ar' => [
+                    'first_name' => 'محمد',
+                    'last_name' => 'مصطفى'
+                ],
+                'en' => [
+                    'first_name' => 'Mohamed',
+                    'last_name' => 'Mostafa'
+                ],
+                'email' => 'test@test.com',
+                'phone' => '0512345678',
+                'company_id' => Company::all()->random()->id,
             ],
-            'en' => [
-                'first_name' => 'Mohamed',
-                'last_name' => 'Mostafa'
-            ],
-            'email' => 'test@test.com',
-            'phone' => '0512345678',
-            'company_id' => Company::all()->random()->id,
-        ]);
-        $mohamed->addMediaFromUrl('https://i.pinimg.com/736x/73/e3/b3/73e3b3f901f4654905b781611eb62a4c.jpg')->usingName($mohamed->first_name)->toMediaCollection('employee');
+            [
+                'ar' => [
+                    'first_name' => 'علي',
+                    'last_name' => 'علي'
+                ],
+                'en' => [
+                    'first_name' => 'Ali',
+                    'last_name' => 'Ali'
+                ],
+                'email' => 'test2@test.com',
+                'phone' => '0512345679',
+                'company_id' => Company::all()->random()->id,
+            ]
+        ];
 
-        $ali = Employee::create([
-            'ar' => [
-                'first_name' => 'علي',
-                'last_name' => 'علي'
-            ],
-            'en' => [
-                'first_name' => 'Ali',
-                'last_name' => 'Ali'
-            ],
-            'email' => 'test2@test.com',
-            'phone' => '0512345679',
-            'company_id' => Company::all()->random()->id,
-        ]);
-        $ali->addMediaFromUrl('https://as2.ftcdn.net/v2/jpg/02/04/63/91/500_F_204639191_kk9AznqqILXxTIGA2WdYtkxZKnkxYhE9.jpg')->usingName($ali->first_name)->toMediaCollection('employee');
+        foreach ($employees as $employee) {
+            $model = Employee::create($employee);
+            $model->addMedia(public_path('/seed/' . $employee['en']['first_name'] . '.jpg'))->usingName($employee['en']['first_name'])->preservingOriginal()->toMediaCollection('employee');
+        }
     }
 }
