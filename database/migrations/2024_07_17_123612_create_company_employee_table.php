@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignID('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreignID('employee_id')->references('id')->on('employees')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
