@@ -24,42 +24,51 @@ class EmployeeController extends Controller
         ]);
     }
 
-    // public function store(Request $request): JsonResponse
-    // {
-    //     $EmployeeDetails = $request->only([
-    //         'client',
-    //         'details'
-    //     ]);
+    public function store(Request $request): JsonResponse
+    {
+        $EmployeeDetails = $request->only([
+            'ar_first_name',
+            'ar_last_name',
+            'en_first_name',
+            'en_last_name',
+            'email',
+            'phone',
+            'image_url',
+            'companies',
+        ]);
 
-    //     return response()->json(
-    //         [
-    //             'data' => $this->EmployeeRepository->createEmployee($EmployeeDetails)
-    //         ],
-    //         Response::HTTP_CREATED
-    //     );
-    // }
+        return response()->json(
+            [
+                'data' => $this->EmployeeRepository->createEmployee($EmployeeDetails)
+            ],
+            Response::HTTP_CREATED
+        );
+    }
 
     public function show(Request $request): JsonResponse
     {
         $EmployeeId = $request->route('id');
 
-        return response()->json([
-            'data' => $this->EmployeeRepository->getEmployeeById($EmployeeId)
-        ]);
+        return response()->json(['data' => $this->EmployeeRepository->getEmployeeById($EmployeeId)]);
     }
 
-    // public function update(Request $request): JsonResponse
-    // {
-    //     $EmployeeId = $request->route('id');
-    //     $EmployeeDetails = $request->only([
-    //         'client',
-    //         'details'
-    //     ]);
+    public function update(Request $request): JsonResponse
+    {
+        $EmployeeId = $request->route('id');
+        $EmployeeDetails = $request->only([
+            // 'ar_first_name',
+            // 'ar_last_name',
+            // 'en_first_name',
+            // 'en_last_name',
+            'email',
+            'phone',
+            // 'image_url',
+            // 'companies',
+        ]);
 
-    //     return response()->json([
-    //         'data' => $this->EmployeeRepository->updateEmployee($EmployeeId, $EmployeeDetails)
-    //     ]);
-    // }
+        $this->EmployeeRepository->updateEmployee($EmployeeId, $EmployeeDetails);
+        return response()->json([['message' => 'Employee updated successfully'], 'data' => $this->EmployeeRepository->getEmployeeById($EmployeeId)]);
+    }
 
     public function delete(Request $request): JsonResponse
     {
