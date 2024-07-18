@@ -65,25 +65,6 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                             </div>
                             <div>
-                                <label for="company_id"
-                                    class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.company') }}</label>
-                                @error('company_id')
-                                    <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                                <select name="company_id" id="company_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="" {{ old('company_id') == '' ? 'selected' : '' }} disabled>
-                                    </option>
-                                    @foreach ($companies as $company)
-                                        <option value="{{ $company->id }}"
-                                            {{ old('company_id') == $company->id ? 'selected' : '' }}>
-                                            {{ $company->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div>
                                 <label for="email"
                                     class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.email') }}</label>
                                 @error('email')
@@ -104,6 +85,22 @@
                                 @enderror
                                 <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                            </div>
+                            <div>
+                                <label for="countries_id"
+                                    class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.company') }}</label>
+                                @error('countries_id')
+                                    <div class="p-2 m-2 text-xs text-red-800 rounded-lg bg-red-50" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <select multiple id="countries_id" name="countries_id[]"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option value="" disabled>Select one or more companies</option>
+                                    @foreach ($companies as $company)
+                                        <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div>
                                 <label for="image"
