@@ -15,7 +15,7 @@ class Employee extends Model implements HasMedia, TranslatableContract
 {
     use HasFactory, InteractsWithMedia, Translatable;
 
-    protected $fillable = ['company_id', 'email', 'phone'];
+    protected $fillable = ['email', 'phone'];
     public $translatedAttributes = ['first_name', 'last_name'];
 
     public function companies()
