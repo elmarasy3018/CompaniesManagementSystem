@@ -197,7 +197,7 @@ return [
         'ar_last_name' => "الأسم الأخير (Ar)",
         'en_first_name' => "الأسم الأول (En)",
         'en_last_name' => "الأسم الأخير (En)",
-        'company_id' => "الشركة",
+        'companies_id' => "الشركات",
         'email' => "البريد الإلكتروني",
         'phone' => "رقم الهاتف",
     ],
