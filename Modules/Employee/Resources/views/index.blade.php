@@ -58,7 +58,10 @@
                                                 {{ $employee->last_name }}</td>
                                             <td
                                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $employee->company->name }}</td>
+                                                @foreach ($employee->companies as $company)
+                                                    <li>{{ $company->name }}</li>
+                                                @endforeach
+                                            </td>
                                             <td class="px-6 py-4">{{ $employee->email }}</td>
                                             <td class="px-6 py-4">{{ $employee->phone }}</td>
                                             <td class="px-6 py-4">

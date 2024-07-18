@@ -16,7 +16,7 @@ class UpdateEmployeeRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:100'],
             'last_name' => ['required', 'string', 'max:100'],
-            'company_id' => ['required', 'exists:companies,id'],
+            'countries_id' => ['required'],
             'email' => ['required', 'email', 'max:100'],
             'phone' => ['required', 'regex:/^05\d{8}$/'],
             // 'phone' => ['required', 'numeric', 'digits:10', 'starts_with:05'],

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('locale')->index();
 
             // Foreign key to the main model
-            $table->foreignID('employee_id')->references('id')->on('employees')->onDelete('cascade');;
+            $table->foreignID('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->unique(['employee_id', 'locale']);
 
             // Actual fields you want to translate

@@ -22,7 +22,12 @@ class CompanySeeder extends Seeder
                 'name' => 'HP',
                 'email' => 'hp@hp.com',
                 'website' => 'hp.com',
-            ]
+            ],
+            [
+                'name' => 'WE',
+                'email' => 'we@we.com',
+                'website' => 'we.com',
+            ],
         ];
 
         foreach ($companies as $company) {

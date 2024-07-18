@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Employee\Entities\Employee;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -15,8 +14,8 @@ class Company extends Model implements HasMedia
 
     protected $fillable = ['name', 'email', 'website'];
 
-    public function employees(): HasMany
+    public function employees()
     {
-        return $this->hasMany(employee::class);
+        return $this->belongsToMany(employee::class);
     }
 }

@@ -15,12 +15,12 @@ class Employee extends Model implements HasMedia, TranslatableContract
 {
     use HasFactory, InteractsWithMedia, Translatable;
 
-    protected $fillable = ['company_id', 'email', 'phone'];
+    protected $fillable = ['email', 'phone'];
     public $translatedAttributes = ['first_name', 'last_name'];
 
-    public function company(): BelongsTo
+    public function companies()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsToMany(company::class);
     }
 
     protected static function newFactory()
