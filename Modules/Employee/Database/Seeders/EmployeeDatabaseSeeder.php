@@ -39,11 +39,24 @@ class EmployeeDatabaseSeeder extends Seeder
                 ],
                 'email' => 'test2@test.com',
                 'phone' => '0512345679',
-            ]
+            ],
+            [
+                'ar' => [
+                    'first_name' => 'أحمد',
+                    'last_name' => 'عادل'
+                ],
+                'en' => [
+                    'first_name' => 'Ahmed',
+                    'last_name' => 'Adel'
+                ],
+                'email' => 'test3@test.com',
+                'phone' => '0512345697',
+            ],
         ];
 
         foreach ($employees as $employee) {
             $model = Employee::create($employee);
+            $model->companies()->attach([Company::all()->random()->id]);
             $model->addMedia(public_path('/seed/' . $employee['en']['first_name'] . '.jpg'))->usingName($employee['en']['first_name'])->preservingOriginal()->toMediaCollection('employee');
         }
     }
