@@ -48,7 +48,7 @@ class EmployeeController extends Controller
 
         $translated += $validated;
         $employee = Employee::create($translated);
-        $employee->companies()->attach($request->countries_id);
+        $employee->companies()->attach($request->companies_id);
         $employee->addMediaFromRequest('image')->usingName($employee->first_name)->toMediaCollection('employee');
         return redirect('employees');
     }
@@ -76,7 +76,7 @@ class EmployeeController extends Controller
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
         $employee->update($request->validated());
-        $employee->companies()->sync($request->countries_id);
+        $employee->companies()->sync($request->companies_id);
         if ($request->hasFile('image')) {
             $employee->clearMediaCollection('employee');
             $employee->addMediaFromRequest('image')->usingName($employee->first_name)->toMediaCollection('employee');
