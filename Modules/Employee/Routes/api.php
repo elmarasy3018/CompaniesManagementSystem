@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiAuthController;
 use Modules\Employee\Http\Controllers\api\EmployeeController;
 
 /*
@@ -17,6 +17,14 @@ use Modules\Employee\Http\Controllers\api\EmployeeController;
 
 Route::get('employees', [EmployeeController::class, 'index']);
 Route::get('employees/{id}', [EmployeeController::class, 'show']);
-Route::post('employees', [EmployeeController::class, 'store']);
-Route::put('employees/{id}', [EmployeeController::class, 'update']);
-Route::delete('employees/{id}', [EmployeeController::class, 'delete']);
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('employees', [EmployeeController::class, 'store']);
+    Route::put('employees/{id}', [EmployeeController::class, 'update']);
+    Route::delete('employees/{id}', [EmployeeController::class, 'delete']);
+
+    Route::post('logout', [ApiAuthController::class, 'logout']);
+});
+
+Route::post('register', [ApiAuthController::class, 'register']);
+Route::post('login', [ApiAuthController::class, 'login']);
