@@ -3,6 +3,8 @@
 namespace Modules\User\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
 
 class UserDatabaseSeeder extends Seeder
@@ -16,6 +18,10 @@ class UserDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('12345678'),
+        ]);
     }
 }
