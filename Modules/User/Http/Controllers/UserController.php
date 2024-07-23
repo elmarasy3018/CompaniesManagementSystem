@@ -69,7 +69,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $roles_id = $request->roles_id;
+        $validate = $request->validate([
+            'roles_id' => 'required',
+        ]);
+        $roles_id = $validate['roles_id'];
         $user = User::find($id);
         $user->syncRoles($roles_id);
         return redirect()->action([UserController::class, 'index']);
