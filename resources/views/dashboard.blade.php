@@ -10,6 +10,13 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __('web.welcome') }}
+                    @foreach (Auth::user()->roles as $userRole)
+                        <li>{{ $userRole->name }}</li>
+                    @endforeach
+                    <br>
+                    @foreach (Auth::user()->getAllPermissions() as $userRole)
+                        <li>{{ $userRole->name }}</li>
+                    @endforeach
                 </div>
             </div>
         </div>
