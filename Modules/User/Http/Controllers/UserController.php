@@ -2,9 +2,12 @@
 
 namespace Modules\User\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Modules\User\Entities\User;
 use Illuminate\Routing\Controller;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Support\Renderable;
 
 class UserController extends Controller
 {
@@ -14,7 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user::index');
+        $users = User::paginate(10);
+        $roles = Role::all();
+        return view('user::index', ['users' => $users, 'roles' => $roles]);
     }
 
     /**
@@ -64,7 +69,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $roles_id = $request->roles_id;
+        $user = User::find($id);
+        $user->syncRoles($roles_id);
+        return redirect()->action([UserController::class, 'index']);
     }
 
     /**
