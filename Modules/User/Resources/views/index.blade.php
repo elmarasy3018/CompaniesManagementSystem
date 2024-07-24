@@ -39,18 +39,31 @@
                                             class="min-h-80 odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                             <th
                                                 scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $user->name }}</th>
+                                                {{ $user->name }}
+                                            </th>
                                             <td
                                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                @foreach ($userRoles = $user->getRoleNames() as $userRole)
-                                                    <li>{{ $userRole }}</li>
-                                                @endforeach
+                                                <div class="flex flex-wrap rounded-md shadow-sm w-full max-w-44"
+                                                    role="group">
+                                                    @foreach ($userRoles = $user->getRoleNames() as $userRole)
+                                                        <span
+                                                            class="m-1 px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-100 rounded-full hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-500 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                                                            {{ $userRole }}
+                                                        </span>
+                                                    @endforeach
+                                                </div>
                                             </td>
                                             <td
                                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                @foreach ($userPermissions = $user->getAllPermissions() as $userPermission)
-                                                    <li>{{ $userPermission->name }}</li>
-                                                @endforeach
+                                                <div class="flex flex-wrap rounded-md shadow-sm w-full max-w-96"
+                                                    role="group">
+                                                    @foreach ($userPermissions = $user->getAllPermissions() as $userPermission)
+                                                        <span
+                                                            class="m-1 px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-100 rounded-full hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-500 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                                                            {{ $userPermission->name }}
+                                                        </span>
+                                                    @endforeach
+                                                </div>
                                             </td>
                                             <form action="{{ route('users.update', $user->id) }}" method="post"
                                                 enctype="multipart/form-data" class="max-w-sm mx-auto">
