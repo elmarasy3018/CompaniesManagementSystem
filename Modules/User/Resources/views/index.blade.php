@@ -20,6 +20,9 @@
                                             {{ __('web.roles') }} {{ __('web.users') }}
                                         </th>
                                         <th scope="col" class="text-base px-6 py-3">
+                                            {{ __('web.permissions') }} {{ __('web.users') }}
+                                        </th>
+                                        <th scope="col" class="text-base px-6 py-3">
                                             {{ __('web.roles') }}
                                         </th>
                                         <th scope="col" class="text-base px-6 py-3">
@@ -38,6 +41,12 @@
                                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 @foreach ($userRoles = $user->getRoleNames() as $userRole)
                                                     <li>{{ $userRole }}</li>
+                                                @endforeach
+                                            </td>
+                                            <td
+                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                @foreach ($userPermissions = $user->getAllPermissions() as $userPermission)
+                                                    <li>{{ $userPermission->name }}</li>
                                                 @endforeach
                                             </td>
                                             <form action="{{ route('users.update', $user->id) }}" method="post"
