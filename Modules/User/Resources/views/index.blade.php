@@ -11,7 +11,7 @@
                     @if (count($users) > 0)
                         <div class="m-3 relative overflow-x-auto shadow-md sm:rounded-lg">
                             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <thead class="text-xs text-gray-800 bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th scope="col" class="text-base px-6 py-3">
                                             {{ __('web.name') }}
@@ -44,7 +44,7 @@
                                             <td
                                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <span
-                                                    class="px-4 py-2 text-sm font-medium text-gray-900 border border-gray-100 rounded-full hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-500 dark:text-white dark:hover:text-white dark:focus:ring-blue-500 dark:focus:text-white @if ($user->status == 'active') bg-green-500 hover:bg-green-600
+                                                    class="px-4 py-2 text-sm font-medium text-gray-900 border border-gray-100 rounded-full focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-500 dark:text-white dark:hover:text-white dark:focus:ring-blue-500 dark:focus:text-white @if ($user->status == 'active') bg-green-500 hover:bg-green-600
                                                     @else bg-red-500 hover:bg-red-600 @endif">
                                                     {{ $user->status }}
                                                 </span>
@@ -55,7 +55,7 @@
                                                     role="group">
                                                     @foreach ($userRoles = $user->getRoleNames() as $userRole)
                                                         <span
-                                                            class="m-1 px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-100 rounded-full hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-500 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                                                            class="m-1 px-4 py-2 text-sm font-medium text-gray-900 bg-gray-200 border border-gray-300 rounded-full hover:bg-gray-300 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-500 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                                                             {{ $userRole }}
                                                         </span>
                                                     @endforeach
@@ -67,7 +67,7 @@
                                                     role="group">
                                                     @foreach ($userPermissions = $user->getAllPermissions() as $userPermission)
                                                         <span
-                                                            class="m-1 px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-100 rounded-full hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-500 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                                                            class="m-1 px-4 py-2 text-sm font-medium text-gray-900 bg-gray-200 border border-gray-300 rounded-full hover:bg-gray-300 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-500 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                                                             {{ $userPermission->name }}
                                                         </span>
                                                     @endforeach
