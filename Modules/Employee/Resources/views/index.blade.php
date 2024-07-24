@@ -68,13 +68,14 @@
                                                 <img src="{{ asset('storage/' . $employee->getFirstMedia('employee')->id . '/' . $employee->getFirstMedia('employee')->file_name) }}"
                                                     alt="{{ $employee->first_name }}" class="h-14 w-14 m-2">
                                             </td>
-                                            <td class="px-6 py-4"><a
-                                                    href="{{ route('employees.edit', $employee->id) }}">
+                                            <td class="px-6 py-4">
+                                                <a href="{{ route('employees.edit', $employee->id) }}">
                                                     <button type="button"
                                                         class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
                                                         {{ __('web.edit') }}
                                                     </button>
-                                                </a></td>
+                                                </a>
+                                            </td>
                                             <td class="px-6 py-4">
                                                 <form action="{{ route('employees.destroy', $employee->id) }}"
                                                     method="post" onsubmit="return confirm('Are You Sure ?');">
