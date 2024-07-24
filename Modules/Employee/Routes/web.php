@@ -18,7 +18,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['auth', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'middleware' => ['auth', 'isActive', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
         Route::resources(['employees' => EmployeeController::class]);
