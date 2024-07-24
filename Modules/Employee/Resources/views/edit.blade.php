@@ -41,7 +41,7 @@
                             <label for="companies_id"
                                 class="block mb-2 text-sm font-medium text-gray-900">{{ __('web.company') }}</label>
                             <select id="companies_id" name="companies_id[]" multiple="multiple"
-                                class="js-example-basic-multiple bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="js-example-basic-multiple" style="width: 100%">
                                 <option value="" disabled>Select one or more companies</option>
                                 @foreach ($companies as $company)
                                     <option value="{{ $company->id }}">{{ $company->name }}</option>
