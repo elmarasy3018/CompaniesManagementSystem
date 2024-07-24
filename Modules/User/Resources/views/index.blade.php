@@ -28,6 +28,9 @@
                                         <th scope="col" class="text-base px-6 py-3">
                                             {{ __('web.edit') }}
                                         </th>
+                                        <th scope="col" class="text-base px-6 py-3">
+                                            {{ __('web.delete') }}
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,7 +58,8 @@
                                                 @csrf
                                                 <td
                                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <select multiple="multiple" id="roles_id" name="roles_id[]" class="js-example-basic-multiple">
+                                                    <select multiple="multiple" id="roles_id" name="roles_id[]"
+                                                        class="js-example-basic-multiple">
                                                         @foreach ($roles as $role)
                                                             <option value="{{ $role->name }}">{{ $role->name }}
                                                             </option>
@@ -69,6 +73,17 @@
                                                     </button>
                                                 </td>
                                             </form>
+                                            <td class="px-6 py-4">
+                                                <form action="{{ route('users.destroy', $user->id) }}" method="post"
+                                                    onsubmit="return confirm('Are You Sure ?');">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit"
+                                                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                                        {{ __('web.delete') }}
+                                                    </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
