@@ -51,6 +51,12 @@ class ApiAuthController extends Controller
             ], 401);
         }
 
+        if (!$user->hasPermissionTo('Use API')) {
+            return [
+                'message' => 'unauthorized to use api'
+            ];
+        }
+
         $token = $user->createToken('myapptoken')->plainTextToken;
 
         $response = [

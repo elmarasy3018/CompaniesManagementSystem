@@ -4,6 +4,7 @@ namespace Modules\Employee\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Modules\Employee\Entities\Employee;
 use Modules\Employee\Http\Requests\StoreEmployeeRequest;
 use Modules\Employee\Http\Requests\UpdateEmployeeRequest;
@@ -33,6 +34,11 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
+        $user = Auth::user();
+        if (!$user->hasPermissionTo('create_employee')) {
+            abort(403, 'Unauthorized to do this action');
+        }
+
         $validated = $request->validated();
 
         $translated = [
@@ -75,6 +81,11 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
+        $user = Auth::user();
+        if (!$user->hasPermissionTo('edit_employee')) {
+            abort(403, 'Unauthorized to do this action');
+        }
+
         $employee->update($request->validated());
         $employee->companies()->sync($request->companies_id);
         if ($request->hasFile('image')) {
@@ -89,6 +100,11 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
+        $user = Auth::user();
+        if (!$user->hasPermissionTo('delete_employee')) {
+            abort(403, 'Unauthorized to do this action');
+        }
+
         $employee->delete();
         $employee->clearMediaCollection('employee');
         return redirect('employees');
