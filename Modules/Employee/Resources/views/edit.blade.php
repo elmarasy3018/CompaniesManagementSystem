@@ -44,7 +44,9 @@
                                 class="js-example-basic-multiple" style="width: 100%">
                                 <option value="" disabled>Select one or more companies</option>
                                 @foreach ($companies as $company)
-                                    <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                    <option value="{{ $company->id }}"
+                                        @if (in_array($company->name, $employee->companies->pluck('name')->toArray())) selected @endif>
+                                        {{ $company->name }}</option>
                                 @endforeach
                             </select>
                         </div>

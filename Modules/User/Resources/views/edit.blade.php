@@ -34,7 +34,8 @@
                             <label class="inline-flex items-center me-5 cursor-pointer">
                                 <span class="me-3 block mb-2 text-m font-medium text-gray-900">{{ __('web.status') }} :
                                 </span>
-                                <input type="checkbox" id="status" name="status" value="active" class="sr-only peer" @if ($user->status == 'active') checked @endif>
+                                <input type="checkbox" id="status" name="status" value="active" class="sr-only peer"
+                                    @if ($user->status == 'active') checked @endif>
                                 <div
                                     class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
                                 </div>
@@ -46,7 +47,8 @@
                             <select multiple="multiple" id="roles_id" name="roles_id[]"
                                 class="js-example-basic-multiple" style="width: 100%">
                                 @foreach ($roles as $role)
-                                    <option value="{{ $role->name }}">{{ $role->name }}
+                                    <option value="{{ $role->name }}"
+                                        @if (in_array($role->name, $user->Roles()->pluck('name')->toArray())) selected @endif>{{ $role->name }}
                                     </option>
                                 @endforeach
                             </select>
