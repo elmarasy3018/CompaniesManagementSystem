@@ -23,6 +23,6 @@ return [
     'user' => "مستخدم",
     'users' => "المستخدمين",
     'roles' => "مهام",
-    'permissions' => "الصلاحيات",
+    'permissions' => "صلاحيات",
 
 ];
