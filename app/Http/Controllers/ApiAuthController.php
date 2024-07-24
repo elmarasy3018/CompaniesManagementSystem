@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Modules\User\Entities\User;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
 class ApiAuthController extends Controller
@@ -22,6 +23,8 @@ class ApiAuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        $user->assignRole(['API User']);
 
         $token = $user->createToken('myapptoken')->plainTextToken;
 
@@ -46,6 +49,12 @@ class ApiAuthController extends Controller
             return response([
                 'message' => 'Wrong password'
             ], 401);
+        }
+
+        if (!$user->hasPermissionTo('Use API')) {
+            return [
+                'message' => 'unauthorized to use api'
+            ];
         }
 
         $token = $user->createToken('myapptoken')->plainTextToken;

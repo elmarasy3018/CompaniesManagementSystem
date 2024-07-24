@@ -28,6 +28,16 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = Auth::user();
+        if (!$user->hasPermissionTo('Use Dashboard')) {
+
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            abort(403, 'Unauthorized to login in to the dashboard');
+        }
+
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

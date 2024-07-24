@@ -20,5 +20,9 @@ return [
     'first' => "First Name",
     'last' => "Last Name",
     'phone' => "Phone",
+    'user' => "User",
+    'users' => "Users",
+    'roles' => "Roles",
+    'permissions' => "Permissions",
 
 ];
