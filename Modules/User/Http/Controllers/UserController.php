@@ -74,7 +74,13 @@ class UserController extends Controller
             'roles_id' => 'required',
         ]);
         $roles_id = $validate['roles_id'];
+
         $user = User::find($id);
+        if ($request->status) {
+            $user->update(['status' => 'active']);
+        } else {
+            $user->update(['status' => 'disabled']);
+        }
         $user->syncRoles($roles_id);
         return redirect()->action([UserController::class, 'index']);
     }

@@ -24,5 +24,6 @@ return [
     'users' => "Users",
     'roles' => "Roles",
     'permissions' => "Permissions",
+    'status' => "Status",
 
 ];

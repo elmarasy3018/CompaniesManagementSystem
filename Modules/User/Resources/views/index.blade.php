@@ -17,6 +17,9 @@
                                             {{ __('web.name') }}
                                         </th>
                                         <th scope="col" class="text-base px-6 py-3">
+                                            {{ __('web.status') }}
+                                        </th>
+                                        <th scope="col" class="text-base px-6 py-3">
                                             {{ __('web.roles') }} {{ __('web.users') }}
                                         </th>
                                         <th scope="col" class="text-base px-6 py-3">
@@ -38,6 +41,14 @@
                                                 scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 {{ $user->name }}
                                             </th>
+                                            <td
+                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <span
+                                                    class="px-4 py-2 text-sm font-medium text-gray-900 border border-gray-100 rounded-full hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-500 dark:text-white dark:hover:text-white dark:focus:ring-blue-500 dark:focus:text-white @if ($user->status == 'active') bg-green-500 hover:bg-green-600
+                                                    @else bg-red-500 hover:bg-red-600 @endif">
+                                                    {{ $user->status }}
+                                                </span>
+                                            </td>
                                             <td
                                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <div class="flex flex-wrap rounded-md shadow-sm w-full max-w-44"
@@ -62,7 +73,7 @@
                                                     @endforeach
                                                 </div>
                                             </td>
-                                            <td class="px-6 py-4">,
+                                            <td class="px-6 py-4">
                                                 <a href="{{ route('users.edit', $user->id) }}">
                                                     <button type="button"
                                                         class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
