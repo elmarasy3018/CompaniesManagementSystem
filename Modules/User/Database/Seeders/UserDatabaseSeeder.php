@@ -48,5 +48,12 @@ class UserDatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
         $user->assignRole(['Super User']);
+
+        $user = User::create([
+            'name' => 'Company',
+            'email' => 'company@company.com',
+            'password' => Hash::make('12345678'),
+        ]);
+        $user->assignRole(['Company Admin']);
     }
 }
