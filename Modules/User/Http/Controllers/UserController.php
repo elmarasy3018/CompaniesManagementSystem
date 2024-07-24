@@ -56,9 +56,10 @@ class UserController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        return view('user::edit');
+        $roles = Role::all();
+        return view('user::edit', ['user' => $user, 'roles' => $roles]);
     }
 
     /**

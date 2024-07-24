@@ -23,9 +23,6 @@
                                             {{ __('web.permissions') }} {{ __('web.users') }}
                                         </th>
                                         <th scope="col" class="text-base px-6 py-3">
-                                            {{ __('web.roles') }}
-                                        </th>
-                                        <th scope="col" class="text-base px-6 py-3">
                                             {{ __('web.edit') }}
                                         </th>
                                         <th scope="col" class="text-base px-6 py-3">
@@ -65,27 +62,14 @@
                                                     @endforeach
                                                 </div>
                                             </td>
-                                            <form action="{{ route('users.update', $user->id) }}" method="post"
-                                                enctype="multipart/form-data" class="max-w-sm mx-auto">
-                                                @method('put')
-                                                @csrf
-                                                <td
-                                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <select multiple="multiple" id="roles_id" name="roles_id[]"
-                                                        class="js-example-basic-multiple">
-                                                        @foreach ($roles as $role)
-                                                            <option value="{{ $role->name }}">{{ $role->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <button type="submit"
+                                            <td class="px-6 py-4">,
+                                                <a href="{{ route('users.edit', $user->id) }}">
+                                                    <button type="button"
                                                         class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
                                                         {{ __('web.edit') }}
                                                     </button>
-                                                </td>
-                                            </form>
+                                                </a>
+                                            </td>
                                             <td class="px-6 py-4">
                                                 <form action="{{ route('users.destroy', $user->id) }}" method="post"
                                                     onsubmit="return confirm('Are You Sure ?');">
